@@ -1,8 +1,10 @@
 import FTP from 'ftp'
+import * as dotenv from 'dotenv'
 import { processXmlBuffer } from './processXmlBuffer'
 import { socket } from './socket'
 
 const client = new FTP()
+dotenv.config()
 
 client.on('ready', () => {
   console.log('Client FTP ready')
@@ -39,10 +41,10 @@ client.on('ready', () => {
 })
 
 client.connect({
-  host: 'vc171.entorno.es',
-  port: 21,
-  user: 'farmaconnect-elsaler-externo',
-  password: '9B2fF_ot6sjkmNb0s'
+  host: process.env.Env_host,
+  port: parseInt(process.env.Env_port ?? '0', 10),
+  user: process.env.Env_user,
+  password: process.env.Env_password
 })
 
 socket.on('connect', () => {
