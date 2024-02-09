@@ -56,7 +56,15 @@ socket.on('disconnect', () => {
 })
 
 socket.on('setPrimProducts', ({ data }) => {
-  console.log('setPrimProducts', data)
+  const catalogues = {
+    id: 'PRIM_ORTOPEDIA',
+    ref: 'PRIM_ORTOPEDIA',
+    description: 'Ortopedia Prim',
+    name: 'Ortopedia Prim',
+    date: new Date().getTime(),
+    articles: []
+  }
+  console.log('setPrimProducts', data, catalogues)
 })
 
 socket.on('getPrimProducts', ({ mac }) => {
